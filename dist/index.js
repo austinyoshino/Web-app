@@ -87,7 +87,7 @@ app.delete('/videos/:id', (req, res) => __awaiter(void 0, void 0, void 0, functi
         const col = yield utils_1.loadCollection(COLLECTION_NAME, db);
         const result = col.remove(parseInt(req.params.id));
         db.saveDatabase();
-        res.send('Video #' `${req.params.id}`, 'deleted.');
+        res.send('Video deleted.');
         if (!result) {
             res.sendStatus(404);
             return;
