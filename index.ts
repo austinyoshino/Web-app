@@ -76,3 +76,21 @@ app.get('/videos/:id', async (req, res) => {
         res.sendStatus(400);
     }
 })
+
+//deletes specific video by id
+app.delete('/videos/:id', async (req, res) => {
+    try {
+        const col = await loadCollection(COLLECTION_NAME, db);
+        const result = col.remove(parseInt(req.params.id));
+
+        db.saveDatabase();
+        res.send('Video deleted.');
+
+        if(!result) {
+            res.sendStatus(404);
+            return;
+        }
+    } catch (err) {
+        res.sendStatus(400);
+    }
+})

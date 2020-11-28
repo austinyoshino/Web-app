@@ -81,4 +81,20 @@ app.get('/videos/:id', (req, res) => __awaiter(void 0, void 0, void 0, function*
         res.sendStatus(400);
     }
 }));
+//deletes specific video by id
+app.delete('/videos/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const col = yield utils_1.loadCollection(COLLECTION_NAME, db);
+        const result = col.remove(parseInt(req.params.id));
+        db.saveDatabase();
+        res.send('Video #' `${req.params.id}`, 'deleted.');
+        if (!result) {
+            res.sendStatus(404);
+            return;
+        }
+    }
+    catch (err) {
+        res.sendStatus(400);
+    }
+}));
 //# sourceMappingURL=index.js.map
