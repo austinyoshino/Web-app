@@ -18,4 +18,8 @@ const videoFilter = function (req, file, cb) {
     cb(null,true);
 };
 
-export { videoFilter, loadCollection }
+const clearAll = function (folderPath) {
+    del.sync([`${folderPath}/**`, `!$[folderPath]`]);
+}
+
+export { videoFilter, loadCollection, clearAll }

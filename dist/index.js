@@ -15,8 +15,8 @@ const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
 const Loki = require("lokijs");
-//setup
 const utils_1 = require("./utils");
+//setup
 const DB_NAME = 'db.json';
 const COLLECTION_NAME = 'images';
 const UPLOAD_PATH = 'uploads';
@@ -50,7 +50,7 @@ app.get('/videos', (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         res.sendStatus(400);
     }
 }));
-//retrieves specific video by id
+//retrieves specific video by id; currently borked
 app.get('/videos/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const col = yield utils_1.loadCollection(COLLECTION_NAME, db);
