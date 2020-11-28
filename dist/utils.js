@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.loadCollection = exports.videoFilter = void 0;
+exports.clearAll = exports.loadCollection = exports.videoFilter = void 0;
+const del = require("del");
 const loadCollection = function (colName, db) {
     return new Promise(resolve => {
         db.loadDatabase({}, () => {
@@ -18,4 +19,8 @@ const videoFilter = function (req, file, cb) {
     cb(null, true);
 };
 exports.videoFilter = videoFilter;
+const clearAll = function (folderPath) {
+    del.sync([`${folderPath}/**`, `!$[folderPath]`]);
+};
+exports.clearAll = clearAll;
 //# sourceMappingURL=utils.js.map
